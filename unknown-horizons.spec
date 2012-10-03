@@ -5,7 +5,7 @@
 Summary:	Unknown Horizons - a 2D realtime strategy simulation
 Name:		unknown-horizons
 Version:	2012.1a
-Release:	0.1
+Release:	1
 License:	GPL v2+, distributable (see docs)
 Group:		Applications/Games
 # https://nodeload.github.com/unknown-horizons/unknown-horizons/zipball/%{version}
