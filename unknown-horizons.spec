@@ -1,3 +1,7 @@
+# TODO
+# - do py_postclean
+# - noarch subpackage for data
+#
 # used in the tarball name
 %define		ver_hash1	244f49f
 # used in the directory name
@@ -8,12 +12,13 @@ Version:	2012.1a
 Release:	1
 License:	GPL v2+, distributable (see docs)
 Group:		Applications/Games
-# https://nodeload.github.com/unknown-horizons/unknown-horizons/zipball/%{version}
+# https://github.com/unknown-horizons/unknown-horizons/releases
 Source0:	%{name}-%{name}-%{version}-0-g%{ver_hash1}.zip
 # Source0-md5:	522c5a6c7a583d98a9ecb686b085f7d6
 URL:		http://www.unknown-horizons.org/
 BuildRequires:	python-distribute
 BuildRequires:	rpm-pythonprov
+BuildRequires:	unzip
 Requires:	python-PyYAML
 Requires:	python-fife
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -59,7 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc README doc/{APL,AUTHORS,CC,CHANGELOG,GPL_fontexception,LICENSE,MIT,OFL}
 %attr(755,root,root) %{_bindir}/%{name}
 %{_datadir}/%{name}
-%dir %{py_sitedir}
 %dir %{py_sitedir}/horizons
 %{py_sitedir}/horizons/ai
 %{py_sitedir}/horizons/command
@@ -78,6 +82,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/horizons/world
 %{py_sitedir}/horizons/*.py*
 %{py_sitedir}/*.egg-info
-%{_pixmapsdir}/*
-%{_desktopdir}/*
+%{_pixmapsdir}/*.xpm
+%{_desktopdir}/*.desktop
 %{_mandir}/man6/%{name}.6*
