@@ -1,6 +1,7 @@
 # TODO
 # - do py_postclean
 # - noarch subpackage for data
+# - use system python-enet then can make whole package noarch
 #
 # used in the tarball name
 %define		ver_hash1	244f49f
