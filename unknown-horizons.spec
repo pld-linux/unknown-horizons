@@ -10,7 +10,7 @@
 Summary:	Unknown Horizons - a 2D realtime strategy simulation
 Name:		unknown-horizons
 Version:	2012.1a
-Release:	1
+Release:	2
 License:	GPL v2+, distributable (see docs)
 Group:		Applications/Games
 # https://github.com/unknown-horizons/unknown-horizons/releases
