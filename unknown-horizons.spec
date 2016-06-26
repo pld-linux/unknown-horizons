@@ -17,8 +17,9 @@ Group:		Applications/Games
 Source0:	%{name}-%{name}-%{version}-0-g%{ver_hash1}.zip
 # Source0-md5:	522c5a6c7a583d98a9ecb686b085f7d6
 URL:		http://www.unknown-horizons.org/
-BuildRequires:	python-distribute
+BuildRequires:	python-setuptools
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	unzip
 Requires:	python-PyYAML
 Requires:	python-fife
@@ -38,14 +39,13 @@ with strategic trade and diplomacy.
 %{__sed} -i -e '1s,^#!.*python,#!%{__python},' run_uh.py
 
 %build
-%{__python} setup.py build
+%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{py_sitedir}
 
-%{__python} setup.py install \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 # contains binary code
 mv $RPM_BUILD_ROOT%{py_sitescriptdir}/* $RPM_BUILD_ROOT%{py_sitedir}
