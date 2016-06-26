@@ -1,6 +1,5 @@
 # TODO
 # - do py_postclean
-# - noarch subpackage for data
 # - use system python-enet then can make whole package noarch
 #
 # used in the tarball name
@@ -10,7 +9,7 @@
 Summary:	Unknown Horizons - a 2D realtime strategy simulation
 Name:		unknown-horizons
 Version:	2012.1a
-Release:	2
+Release:	3
 License:	GPL v2+, distributable (see docs)
 Group:		Applications/Games
 # https://github.com/unknown-horizons/unknown-horizons/releases
@@ -21,6 +20,7 @@ BuildRequires:	python-setuptools
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	unzip
+Requires:	%{name}-data = %{version}-%{release}
 Requires:	python-PyYAML
 Requires:	python-fife
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -31,6 +31,16 @@ on economy and city building. Expand your small settlement to a strong
 and wealthy colony, collect taxes and supply your inhabitants with
 valuable goods. Increase your power with a well balanced economy and
 with strategic trade and diplomacy.
+
+%package data
+Summary:	Unknown Horizons data files
+Group:		Applications/Games
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
+
+%description data
+Unknown Horizons data files
 
 %prep
 %setup -q -n %{name}-%{name}-%{ver_hash2}
@@ -64,7 +74,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README doc/{APL,AUTHORS,CC,CHANGELOG,GPL_fontexception,LICENSE,MIT,OFL}
 %attr(755,root,root) %{_bindir}/%{name}
-%{_datadir}/%{name}
 %dir %{py_sitedir}/horizons
 %{py_sitedir}/horizons/ai
 %{py_sitedir}/horizons/command
@@ -86,3 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*.xpm
 %{_desktopdir}/*.desktop
 %{_mandir}/man6/%{name}.6*
+
+%files data
+%defattr(644,root,root,755)
+%{_datadir}/%{name}
