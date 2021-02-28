@@ -35,9 +35,7 @@ with strategic trade and diplomacy.
 %package data
 Summary:	Unknown Horizons data files
 Group:		Applications/Games
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description data
 Unknown Horizons data files
